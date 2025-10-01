@@ -17,7 +17,7 @@ nihongo_api/
 │   ├── Services/       # Core logic, structured using CQS
 │   ├── Models/         # Entities models
 │   ├── DTOs/           # Requests and responses DTOs
-    └── Data/           # Infrastructure setup and mappings
+│   └── Data/           # Infrastructure setup and mappings
 ├── tests/
 │   └── Api.Tests/      # xUnit tests
 ```
@@ -26,7 +26,7 @@ nihongo_api/
 
 1. **Clone the Repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Mdotta/nihongo_api
    cd nihongo_api
    ```
 
