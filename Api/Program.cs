@@ -14,7 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder
     .AddCorsPolicy()
-    .AddAuth();
+    .AddAuth()
+    .InjectServices();
 
 builder.AddDocumentation();
 
@@ -32,7 +33,6 @@ if (app.Environment.IsDevelopment())
 
 // Endpoint de login
 app.MapAuthRoutes();
-
 
 
 app.MapGet("/", () => "Hello World!");

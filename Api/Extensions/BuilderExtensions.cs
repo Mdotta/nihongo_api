@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Api.Services.Utils;
+using Api.Utils;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -31,6 +33,7 @@ public static class BuilderExtensions
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
+                    
                     ValidateIssuer = true,
                     ValidateAudience = true,
                     ValidateLifetime = true,
@@ -51,4 +54,16 @@ public static class BuilderExtensions
         return builder;
     }
 
+    public static WebApplicationBuilder InjectServices(this WebApplicationBuilder builder)
+    {
+        // Injetar dependências de serviços
+
+        // Bind Settings to appsettings
+        var settings = new Settings();
+        builder.Configuration.GetSection("Jwt").Bind(settings.Jwt);
+        builder.Services.AddSingleton(settings);
+
+        builder.Services.AddScoped<JWTService>();
+        return builder;
+    }
 }
